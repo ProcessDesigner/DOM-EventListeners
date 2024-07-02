@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="bdy"> 
+    <h1>
+        Counter App
+    </h1>
+    <div style="display: flex;
+    gap: 60px;">
+        <div>
+            <button id="dec">Decrement by 1</button>
+        </div>
+        <div>
+            <span id="Value">
+                0
+            </span>
+        </div>
+        <div>
+            <button id="inc">increment by 1</button>
+        </div>
+    </div>
+    <div>
+        <button id="reset">Reset Value</button>
+    </div>
+
+    <div>
+        <button id="dblclk">Double Click</button>
+    </div>
+
+    
+    <button id="over">Hover Me</button>
+    <span id="good"></span>
+    <div>
+        <h1 id="display"></h1>
+        <input id="input-box" type="text" placeholder="Type somthing..."/>
+    </div>  
+
+    <div id="container">
+        <div id="disp">Press any key :)</div>
+    </div>  
+    <script>
+        let dec = document.getElementById("dec")
+        let inc = document.getElementById("inc")
+        let val = document.getElementById("Value")
+        let res = document.getElementById("reset")
+
+        dec.addEventListener("click",()=>{
+            const value = Number(val.innerText);
+            if(value>0){
+                val.innerText = value-1;
+            }
+            else{
+                alert("Negative value not allowed")
+            }
+        })
+        inc.addEventListener("click",()=>{
+            const value = Number(val.innerText);
+            if(value>=10){
+                alert("Negative value not allowed")
+            }
+            else{
+                val.innerText = value+1;
+            }
+
+        })
+        res.addEventListener("click",()=>{
+            val.innerText = 0;
+        })
+
+        let bdy = document.getElementById("bdy");
+        let Double = document.getElementById("dblclk");
+
+        Double.addEventListener("dblclick", () => {
+            bdy.style.backgroundColor = "red";
+        });
+
+        let over = document.getElementById("over");
+        let good = document.getElementById("good");
+
+        over.addEventListener("mouseover",()=>{
+            good.innerText = 'Hey Good Morning'
+        })
+        over.addEventListener("mouseout",()=>{
+            good.innerText = 'ok bye bye T-T'
+        })
+        let input = document.getElementById("input-box");
+        let disp = document.getElementById("display");
+        input.addEventListener("keypress",(e)=>{
+            disp.innerText = "You have pressed "+e.key;
+        })
+        let container = document.getElementById("container");
+        let display = document.getElementById("disp");
+
+        document.addEventListener("keydown", function (e) {
+            display.style.color = "red";
+            display.innerText = e.key + " is keyDown";
+        });
+
+        document.addEventListener("keyup", function (e) {
+            display.style.color = "green";
+            display.innerText = e.key + " is keyUp";
+        });
+    </script>
+</body>
+</html>
